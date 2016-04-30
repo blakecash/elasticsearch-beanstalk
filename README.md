@@ -25,8 +25,8 @@ $ eb init
 Few environment variables have to be specified before deployment
 
  - `CLUSTER_NAME`: This is a name of your new shiny ElasticSearch cluster, please avoid use of `elasticsearch` name
- - `AWS_KEY_ID`: AWS Key ID
- - `AWS_KEY`: AWS Secret Key
+ - `AWS_ACCESS_KEY`: AWS Key ID
+ - `AWS_SECRET_KEY`: AWS Secret Key
  - `AWS_REGION`: Region in which ES cluster will be created
  - `EC2_TAG_NAME`: This value should be equal to the AWS Name tag (same as environment name)
  - `MASTER_NODES`: Amount of master nodes. The rule is simple, this number should equal to total number of nodes (N) divided by 2 plus 1. `N / 2 + 1`.

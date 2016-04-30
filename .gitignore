@@ -4,5 +4,4 @@
 !.elasticbeanstalk/*.global.yml
 *.log
 
-.env*
 !.env.example
