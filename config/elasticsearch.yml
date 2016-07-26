@@ -43,3 +43,6 @@ http:
     cors:
         enabled: true
         allow-origin: '*'
+
+node.data: false
+node.master: false
