@@ -44,5 +44,5 @@ http:
         enabled: true
         allow-origin: '*'
 
-node.data: false
-node.master: false
+node.data:   ${NODE_DATA}
+node.master: ${NODE_MASTER}
