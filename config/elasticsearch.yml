@@ -46,3 +46,5 @@ http:
 
 node.data:   ${NODE_DATA}
 node.master: ${NODE_MASTER}
+
+threadpool.bulk.queue_size: ${BULK_QUEUE_SIZE}
