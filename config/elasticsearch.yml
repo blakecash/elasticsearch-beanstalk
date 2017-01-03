@@ -1,8 +1,6 @@
 cluster:
   name: ${CLUSTER_NAME}
 
-plugin.mandatory: cloud-aws
-
 path:
   logs: /var/log
   data: /var/esdata
@@ -34,7 +32,7 @@ script.engine.groovy.inline.aggs: on
 script.engine.groovy.inline.search: on
 
 network:
-    host: _ec2_
+  host: _ec2_
 
 http:
   host: 0.0.0.0
