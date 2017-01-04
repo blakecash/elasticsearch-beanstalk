@@ -1,1 +1,1 @@
-web: /opt/aws/bin/elasticsearch --path.conf=/var/app/current/config
+web: /opt/aws/bin/elasticsearch -Epath.conf=/var/app/current/config

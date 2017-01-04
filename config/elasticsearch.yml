@@ -2,30 +2,30 @@ cluster:
   name: ${CLUSTER_NAME}
 
 path:
-  logs: /var/log
+  logs: /var/log/elasticsearch
   data: /var/lib/elasticsearch
 
-action.disable_delete_all_indices: true
+plugin.mandatory: discovery-ec2, repository-s3
 
 cloud.aws:
   access_key: ${AWS_ACCESS_KEY}
   secret_key: ${AWS_SECRET_KEY}
   region: ${AWS_REGION}
-
-bootstrap.mlockall: true
+  proxy:
+    username: admin
+    password: password
 
 discovery:
   type: ec2
   ec2:
-    ping_timeout: 120s
     tag.Name: ${EC2_TAG_NAME}
 
 discovery.zen:
+  hosts_provider: ec2
   minimum_master_nodes: ${MASTER_NODES}
-  ping_timeout: 1m
-  ping_retries: 5
-  ping:
-    multicast.enabled: false
+  fd:
+    ping_timeout: 1m
+    ping_retries: 5
 
 script.engine.groovy.inline.update: on
 script.engine.groovy.inline.aggs: on
@@ -35,16 +35,24 @@ network:
   host: _ec2_
 
 http:
+  enabled: ${NODE_CLIENT}
   host: 0.0.0.0
   compression: true
-
   cors:
     enabled: true
-    allow-origin: "/.*/"
-    allow-headers : X-Requested-With,X-Auth-Token,Content-Type, Content-Length, Authorization
-    allow-credentials: true
+    allow-origin: '*'
 
 node.data:   ${NODE_DATA}
 node.master: ${NODE_MASTER}
 
-threadpool.bulk.queue_size: ${BULK_QUEUE_SIZE}
+thread_pool.bulk.queue_size: ${BULK_QUEUE_SIZE}
+
+gateway:
+  expected_nodes: 10
+  recover_after_nodes: 8
+  recover_after_time: 5m
+  expected_data_nodes: 4
+  recover_after_data_nodes: 4
+  expected_master_nodes: 3
+  recover_after_master_nodes: 3
+
