@@ -2,7 +2,7 @@ cluster:
   name: ${CLUSTER_NAME}
 
 path:
-  logs: /var/log/elasticsearch
+  logs: /var/log
   data: /var/lib/elasticsearch
 
 action.disable_delete_all_indices: true
